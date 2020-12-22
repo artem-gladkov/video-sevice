@@ -1,0 +1,37 @@
+{
+  "name": "video-service",
+  "version": "1.0.0",
+  "description": "Test task for high technology center",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KEK-IS-BACK/video-sevice.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "mern"
+  ],
+  "author": "Artem Gladkov <artem.gladkovw@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KEK-IS-BACK/video-sevice/issues"
+  },
+  "homepage": "https://github.com/KEK-IS-BACK/video-sevice#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.3",
+    "express": "^4.17.1",
+    "express-validator": "^6.8.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.11.8"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
+  }
+}
