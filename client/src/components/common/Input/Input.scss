@@ -1,0 +1,21 @@
+@import "../../../assets/scss/_vars.scss";
+
+.input{
+  border: none;
+  border-bottom: 1px solid $defaultColor;
+  outline: none;
+  padding: 0 0 6px;
+  width: 320px;
+  //width: min-content;
+  height: min-content;
+  &::placeholder{
+
+  }
+  &:focus{
+    font-weight: 500;
+  }
+  &:focus{
+    //outline: none;
+  }
+}
+

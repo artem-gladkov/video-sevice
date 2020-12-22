@@ -1,0 +1,25 @@
+@import "../../assets/scss/_vars.scss";
+
+.navigation{
+  display: flex;
+  justify-content: center;
+  width: min-content;
+  margin: 0 auto;
+  &__item{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33.18px;
+    margin: 0 24px 0 0;
+    &:last-child{
+      margin: 0;
+    }
+    &:visited{
+      color: $defaultColor;
+    }
+    &.active{
+      color: $primaryColor;
+      border-bottom: 2px solid $primaryColor;
+    }
+  }
+}

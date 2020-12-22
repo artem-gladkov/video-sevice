@@ -1,0 +1,21 @@
+.header{
+  margin: 0 0 48px 0;
+  &__body{
+    display: grid;
+    width: 100%;
+    grid-template-columns: min-content 1fr min-content;
+    align-items: center;
+    justify-items: center;
+    padding: 32px 0 0 0;
+  }
+  &__logo{
+    justify-self: left;
+  }
+  &__search{
+    margin: 7px 70px 0 0;
+  }
+  &__login{
+    justify-self: right;
+    margin: 1px 0 0;
+  }
+}

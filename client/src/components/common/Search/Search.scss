@@ -1,0 +1,21 @@
+@import "../../../assets/scss/_vars.scss";
+
+.search{
+  display: flex;
+  justify-content: space-between;
+  max-width: 402px;
+  width: 100%;
+  &__btn{
+    color: $primaryColor;
+    border: none;
+    background-color: unset;
+    outline: none;
+    cursor: pointer;
+    padding: 0 1px 5px 0;
+    height: min-content;
+    margin: 0 0 0 32px;
+    &:hover{
+      color: $darkPrimaryColor;
+    }
+  }
+}

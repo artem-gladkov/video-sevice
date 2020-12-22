@@ -1,0 +1,18 @@
+@import "../../../assets/scss/_vars.scss";
+
+.logo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  width: 182px;
+  &:visited{
+    color: $defaultColor;
+  }
+  &__text{
+    font-weight: 500;
+    font-size: 20px;
+    padding: 0 1px 5px 0;
+    margin: 0;
+  }
+}

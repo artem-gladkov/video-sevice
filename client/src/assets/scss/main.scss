@@ -1,0 +1,26 @@
+@import "_normolize";
+@import "vars";
+@import "fonts";
+
+html, body{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: $mainFont;
+  font-size: $mainFontSize;
+  font-weight: $mainFontWeight;
+  color: $mainFontColor;
+  line-height: $mainLineHeight ;
+}
+
+.container{
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+}

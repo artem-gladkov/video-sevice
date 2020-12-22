@@ -1,0 +1,21 @@
+@import "../../../assets/scss/_vars.scss";
+
+.button{
+  min-width: 113px;
+  min-height: 38px;
+  width: min-content;
+  height: min-content;
+  background-color: $primaryColor;
+  border: none;
+  border-radius: 4px;
+  color: $whiteColor;
+  font-weight: 500;
+  padding: 10px 32px;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+  &:hover{
+    background-color: $darkPrimaryColor;
+  }
+}
+
