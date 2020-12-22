@@ -1,2 +1,8 @@
 /node_modules/
-/package-lock.json/
+client/node_modules/
+.idea/
+client/.eslintcache
+
+# production
+/build
+client/build
