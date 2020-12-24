@@ -1,0 +1,36 @@
+@import "../../assets/scss/vars";
+
+.channel{
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 162px;
+  display: grid;
+  grid-template-columns: 33% 1fr;
+  background-color: $lightColor;
+  border-radius: 8px;
+  padding: 21px 24px 19px;
+  &__logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__title{
+    font-size: 20px;
+    line-height: 23.7px;
+    font-weight: 500;
+    margin: 0 0 17px;
+  }
+  &__tvProgram{
+    display: grid;
+    gap: 12px;
+    &Item{
+      display: flex;
+      &.active{
+        color: $primaryColor;
+      }
+    }
+    &Time{
+      margin: 0 16px 0 0;
+    }
+  }
+}

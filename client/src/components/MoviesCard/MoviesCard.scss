@@ -1,0 +1,22 @@
+.moviesCard{
+  &__title{
+    display: flex;
+    align-items: center;
+    &:before{
+      content: '';
+      display: block;
+      width: 25px;
+      height: 25px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-image: url(../../assets/img/fire.png);
+      margin: 0 10px 0 0;
+    }
+  }
+  &__body{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-items: center;
+    gap: 20px;
+  }
+}

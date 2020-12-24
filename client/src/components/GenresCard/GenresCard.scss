@@ -1,0 +1,8 @@
+.genresCard{
+  &__body{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-items: center;
+    gap: 20px;
+  }
+}

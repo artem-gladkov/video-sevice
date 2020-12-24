@@ -6,13 +6,14 @@
   align-items: center;
   text-decoration: none;
   width: 182px;
+  color: $defaultColor;
   &:visited{
     color: $defaultColor;
   }
   &__text{
     font-weight: 500;
     font-size: 20px;
-    padding: 0 1px 5px 0;
+    padding: 0 1px 0 0;
     margin: 0;
   }
 }

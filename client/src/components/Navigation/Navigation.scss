@@ -11,6 +11,7 @@
     font-size: 28px;
     line-height: 33.18px;
     margin: 0 24px 0 0;
+    color: $defaultColor;
     &:last-child{
       margin: 0;
     }
@@ -20,6 +21,9 @@
     &.active{
       color: $primaryColor;
       border-bottom: 2px solid $primaryColor;
+    }
+    &:focus{
+      outline: none;
     }
   }
 }

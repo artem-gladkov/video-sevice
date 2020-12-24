@@ -1,0 +1,30 @@
+.genreItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 208px;
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(127.83deg, #F2C94C 8.44%, #F29A4A 91.36%);
+  opacity: 0.8;
+  border-radius: 6px;
+  transition: opacity ease .4s;
+  cursor: pointer;
+  &:hover{
+    opacity: 1;
+    transition: opacity ease .4s;
+  }
+  &_bg_yellow{
+    background: linear-gradient(127.83deg, #F2C94C 8.44%, #F29A4A 91.36%);
+  }
+  &_bg_peach{
+    background: linear-gradient(127.83deg, #F2994A 8.44%, #EB5757 91.36%);
+  }
+  &_bg_blue{
+    background: linear-gradient(127.83deg, #56CCF2 8.44%, #2F80ED 91.36%);
+  }
+  &_bg_gray{
+    background: linear-gradient(127.83deg, #828282 8.44%, #333333 91.36%);
+  }
+}

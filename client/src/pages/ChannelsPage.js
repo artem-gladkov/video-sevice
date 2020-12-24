@@ -1,8 +1,40 @@
-import React from "react";
+import React, {useEffect} from "react";
+import './ChannelsPage.scss'
+import Channel from "../components/Channel/Channel";
+import {connect} from 'react-redux'
+import {channelsApi} from "../api/api";
+import Preloader from "../components/common/Preloader/Preloader";
+import {setChannels} from "../redux/channels-reducer";
+import {getChannels} from "../redux/selectors";
 
-const ChannelsPage = () => {
+
+const ChannelsPage = (props) => {
+  const {channels, setChannels} = props
+
+  useEffect(() => {
+    //Имитация запроса на сервер для получения списка каналов
+    channelsApi.getChannels().then((result) => {
+      setChannels(result)
+    })
+  }, [channels])
+
   return (
-    <div>ChannelsPage</div>
+    <div className='channelsPage'>
+      {channels
+        ? channels.map(channel => {
+          return <Channel key={channel.id}
+                          channelLogoSrc={channel.channelLogoSrc}
+                          title={channel.title}
+                          tvProgram={channel.tvProgram}/>
+        })
+        : <Preloader/>}
+    </div>
   )
 }
-export default ChannelsPage
+
+const mapStateToProps = (state) => ({
+  channels: getChannels(state)
+})
+
+
+export default connect(mapStateToProps, {setChannels})(ChannelsPage)

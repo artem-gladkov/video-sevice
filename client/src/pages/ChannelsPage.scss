@@ -1,0 +1,11 @@
+.channelsPage{
+  display: grid;
+  gap: 16px 0;
+  margin: 27px 0 72px;
+  max-height: 708px;
+  overflow-y: scroll;
+  padding: 0 16px 0 0;
+  &::-webkit-scrollbar-track{
+    padding: 0 0 0 8px;
+  }
+}
