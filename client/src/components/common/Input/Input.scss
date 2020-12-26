@@ -5,17 +5,13 @@
   border-bottom: 1px solid $defaultColor;
   outline: none;
   padding: 0 0 6px;
-  max-width: 320px;
   width: 100%;
   height: min-content;
-  &::placeholder{
-
-  }
   &:focus{
     font-weight: 500;
   }
   &:focus{
-    //outline: none;
+    outline: none;
   }
 }
 

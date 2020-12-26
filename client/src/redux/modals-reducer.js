@@ -3,12 +3,12 @@ const CLOSE_MODAL = 'video-service/modals/CLOSE_MODAL'
 
 const initialState = {
   modalLogin: {
-    isOpen: true
+    isOpen: false
   },
   modalRegistration: {
     isOpen: false
   },
-  isAppLock: true
+  isAppLock: false
 }
 
 const modalsReducer = (state = initialState, action) => {

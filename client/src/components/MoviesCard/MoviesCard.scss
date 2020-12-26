@@ -1,7 +1,7 @@
-.moviesCard{
-  &__title{
+.moviesCard {
+  &__title {
     display: flex;
-    &:before{
+    &:before {
       content: '';
       display: block;
       width: 25px;
@@ -12,10 +12,19 @@
       margin: 0 4px 0 0;
     }
   }
-  &__body{
+
+  &__body {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     justify-items: center;
     gap: 20px;
+  }
+}
+
+@media screen and (max-width: 1207px) {
+  .moviesCard {
+    &__title {
+      justify-content: center;
+    }
   }
 }

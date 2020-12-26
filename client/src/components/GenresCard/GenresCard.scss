@@ -6,3 +6,12 @@
     gap: 20px;
   }
 }
+
+@media screen and (max-width: 1207px) {
+  .genresCard {
+    &__title {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
