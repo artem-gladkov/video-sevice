@@ -1,5 +1,6 @@
 .moviesPage{
   display: grid;
+  grid-template-rows: minmax(478px, 1fr);
   gap: 32px 0;
   margin: 32px 0 72px;
 }

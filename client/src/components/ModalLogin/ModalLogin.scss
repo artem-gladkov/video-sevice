@@ -1,0 +1,40 @@
+@import "../../assets/scss/vars";
+
+.modalLogin{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .4);
+  &__body{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 304px;
+    background-color: $whiteColor;
+    padding: 36px;
+    border-radius: 8px;
+  }
+  &__title{
+    align-self: center;
+    font-size: 28px;
+    line-height: 33.18px;
+    font-weight: 500;
+    margin: 0 0 24px 0;
+  }
+  &__input{
+    margin: 0 0 24px 0;
+  }
+  &__rememberMe{
+    margin: 0 0 111px 0;
+  }
+  &__btn{
+    align-self: center;
+  }
+}

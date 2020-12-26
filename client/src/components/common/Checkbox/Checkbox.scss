@@ -1,0 +1,31 @@
+@import "../../../assets/scss/vars";
+
+.checkbox{
+  &__input{
+    display: none;
+    &:checked + .checkbox__label > .checkbox__box:before{
+      content: '';
+      width: 4px;
+      height: 9px;
+      border-right: 1px solid $primaryColor;
+      border-bottom: 1px solid $primaryColor;
+      transform: rotate(45deg);
+      position: absolute;
+      left: 5px;
+    }
+  }
+  &__box{
+    box-sizing: border-box;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $defaultColor;
+    border-radius: 4px;
+    margin: 0 8px 0 0 ;
+  }
+  &__label{
+    cursor: pointer;
+    display: flex;
+    user-select: none;
+  }
+}

@@ -11,9 +11,9 @@
     background-color: unset;
     outline: none;
     cursor: pointer;
-    padding: 0 1px 5px 0;
+    padding: 0 1px 0 0;
     height: min-content;
-    margin: 0 0 0 32px;
+    font-weight: bold;
     &:hover{
       color: $darkPrimaryColor;
     }

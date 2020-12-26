@@ -9,3 +9,11 @@ export const getGenres = state => {
 export const getChannels = state => {
   return state.channels ? state.channels.channels : null
 }
+
+export const getIsOpenModalLogin = state => {
+  return state.modals.modalLogin.isOpen
+}
+
+export const getIsAppLock = state => {
+  return state.modals.isAppLock
+}

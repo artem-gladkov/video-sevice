@@ -1,11 +1,12 @@
 .channelsPage{
+  box-sizing: content-box;
   display: grid;
+  width: calc(100% + 8px);
+  min-height: 162px;
   gap: 16px 0;
-  margin: 27px 0 72px;
+  margin: 27px 0 60px 0;
   max-height: 708px;
+  padding: 0 8px 0 0;
   overflow-y: scroll;
-  padding: 0 16px 0 0;
-  &::-webkit-scrollbar-track{
-    padding: 0 0 0 8px;
-  }
+  overflow-x: visible;
 }

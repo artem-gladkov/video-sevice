@@ -6,7 +6,7 @@ const Navigation = () =>{
   return (
     <nav className='navigation'>
       <NavLink to='/movies' className='navigation__item'>Фильмы</NavLink>
-      <NavLink to='/channels'  className='navigation__item'>Каналы</NavLink>
+      <NavLink to='/channels'  className='navigation__item'>Телеканалы</NavLink>
     </nav>
   )
 }

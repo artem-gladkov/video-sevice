@@ -1,8 +1,9 @@
+@import '../../../assets/scss/vars';
+
 .genreItem{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 280px;
   height: 208px;
   box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.15);
@@ -15,6 +16,18 @@
     opacity: 1;
     transition: opacity ease .4s;
   }
+  &__photo{
+    margin: 80px 0 0 0;
+  }
+  &__title{
+    margin: 32px 0 0 0;
+    color: $whiteColor;
+    font-size: 20px;
+    line-height: 23.7px;
+  }
+
+
+
   &_bg_yellow{
     background: linear-gradient(127.83deg, #F2C94C 8.44%, #F29A4A 91.36%);
   }

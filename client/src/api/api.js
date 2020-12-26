@@ -14,7 +14,7 @@ export const channelsApi = { // Имитация запроса на серве�
         {
           id: 0,
           channelLogoSrc: channelLogoOne,
-          title: 'Первый Канал',
+          title: 'Первый канал',
           tvProgram: [
             {
               time: '13:00',
@@ -78,7 +78,7 @@ export const channelsApi = { // Имитация запроса на серве�
         }, {
           id: 4,
           channelLogoSrc: channelLogoOne,
-          title: 'Первый Канал',
+          title: 'Первый канал',
           tvProgram: [
             {
               time: '13:00',

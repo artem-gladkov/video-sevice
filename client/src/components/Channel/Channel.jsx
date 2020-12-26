@@ -6,7 +6,7 @@ const Channel = props => {
 
   const tvProgramElements = tvProgram.map((program, index) => {
     return (
-      <div className='channel__tvProgramItem' key={index}>
+      <div className={`channel__tvProgramItem ${index === 0 ? 'active' : ''}`} key={index}>
         <div className='channel__tvProgramTime'>{program.time}</div>
         <p className='channel__tvProgramTitle'>{program.title}</p>
       </div>
