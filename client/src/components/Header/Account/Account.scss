@@ -1,0 +1,31 @@
+@import "../../../assets/scss/vars";
+
+.account{
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  font-weight: 500;
+  &__name{
+    margin: 0 1px 0 0;
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 5px;
+    &:hover{
+      background: $lightColor;
+    }
+  }
+  &__btnLogout{
+    border: none;
+    background-color: transparent;
+    color: $primaryColor;
+    font-weight: bold;
+    &:hover{
+      color: $darkPrimaryColor;
+    }
+  }
+}
+@media all and (max-width: 576px){
+  .account{
+    justify-self: center;
+  }
+}

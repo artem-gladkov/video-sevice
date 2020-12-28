@@ -13,8 +13,10 @@ const reducers = combineReducers({
   modals: modalsReducer
 })
 
-const store = createStore(reducers)
 
-window.state = store.getState()
+
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 export default store
+
+window.store = store

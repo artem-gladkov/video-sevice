@@ -1,0 +1,5 @@
+{
+  "port" : 5000,
+  "jwtSecret": "zM7g1QvKRIMKFCuow5l52KNIxlenDrPtgDDiCq5C18LrFZ3uZdJQRk61UT8ojRT",
+  "mongoUri": "mongodb+srv://artem:123qweasd@cluster0.6p49b.mongodb.net/app?retryWrites=true&w=majority"
+}

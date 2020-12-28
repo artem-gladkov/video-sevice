@@ -6,6 +6,7 @@ import moveItemOne from '../assets/img/move_item_1.jpg'
 import moveItemTwo from '../assets/img/move_item_2.jpg'
 import moveItemThree from '../assets/img/move_item_3.jpg'
 import moveItemFour from '../assets/img/move_item_4.jpg'
+import * as axios from "axios";
 
 const TIMEOUT = 500 // Искуственная задержка для демонстрации.
 
@@ -159,7 +160,7 @@ export const moviesApi = { // Имитация запроса на сервер 
           photoSrc: moveItemOne,
           title: 'Мульт в кино. Выпуск №103. Некогда грустить!',
           description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolores expedita impedit incidunt quia velit!'
-        },{
+        }, {
           id: 1,
           photoSrc: moveItemTwo,
           title: 'Новый Бэтмен',
@@ -171,13 +172,13 @@ export const moviesApi = { // Имитация запроса на сервер 
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolores expedita impedit incidunt quia velit!' +
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolores expedita impedit incidunt quia velit!' +
             'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolores expedita impedit incidunt quia velit!'
-        },{
+        }, {
           id: 2,
           photoSrc: moveItemThree,
           title: 'Однажды... в Голливуде',
           description: 'Фильм повествует о череде событий, произошедших в Голливуде в 1969 году, на закате его «золотого века». ' +
             'Известный актер Рик Далтон и его дублер Клифф Бут пытаются найти свое место в стремительно меняющемся мире киноиндустрии.'
-        },{
+        }, {
           id: 3,
           photoSrc: moveItemFour,
           title: 'Стриптизёрши',
@@ -189,5 +190,23 @@ export const moviesApi = { // Имитация запроса на сервер 
         resolve(result)
       }, TIMEOUT)
     })
+  }
+}
+
+export const authApi = {
+  registration(email, password, name) {
+    return axios.post('api/auth/registration', {email, password, name})
+  },
+  login(email, password) {
+    return axios.post('api/auth/login', {email, password})
+  }
+}
+
+export const profileApi = {
+  getOwnerProfile(token){
+    return axios.get('api/profile/info', {headers: {'Authorization': 'Bearer ' + token}})
+  },
+  updateName(token, name) {
+    return axios.post('api/profile/updateName', {name}, {headers: {'Authorization': 'Bearer ' + token}})
   }
 }

@@ -1,81 +1,99 @@
-.header{
+.header {
   margin: 0 0 44px 0;
-  &__body{
+
+  &__body {
     display: grid;
     height: 40px;
     width: 100%;
-    grid-template-columns: min-content 1fr min-content;
+    grid-template-columns: min-content 1fr 340px;
     align-items: center;
     justify-items: center;
     padding: 32px 0 0 0;
+    gap: 51px;
   }
-  &__logo{
+
+  &__logo {
     justify-self: left;
     align-self: start;
-    &:focus{
+
+    &:focus {
       outline: none;
     }
   }
-  &__search{
-    margin: 6px 70px 0 0;
+
+  &__search {
+    justify-self: right;
+    margin: 6px 0 0 0;
     max-width: 402px;
   }
-  &__btnLogin{
-    justify-self: right;
-    align-self: end;
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    gap: 10px;
   }
 }
 
-@media all and (max-width: 992px){
-  .header{
-    &__search{
-      margin: 6px 0 0 0;
-    }
-  }
-}
-
-@media all and (max-width: 767px){
-  .header{
-    &__body{
+@media all and (max-width: 992px) {
+  .header {
+    &__body {
       height: unset;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    &__logo{
+
+    &__logo {
       justify-self: start;
     }
-    &__search{
+
+    &__search {
       grid-column: 1 / span 2;
       order: 1;
       max-width: 100%;
     }
-    &__btnLogin{
-      //grid-column: 1 / span 2;
-      align-self: start;
-      justify-self: center;
+
+    &__buttons {
+      justify-content: end;
       width: 100%;
     }
   }
 }
 
-@media all and (max-width: 479px){
-  .header{
-    &__body{
+@media all and (max-width: 767px) {
+
+}
+
+@media all and (max-width: 576px) {
+  .header {
+    &__body {
+      height: unset;
       grid-template-columns: 1fr;
       justify-items: center;
+      gap: 20px;
     }
-    &__logo{
+
+    &__logo {
       justify-self: center;
     }
-    &__search{
-      grid-column: unset;
+
+    &__search {
+      grid-column: 1 / span 1;
       order: 1;
       max-width: 100%;
     }
-    &__btnLogin{
-      //grid-column: 1 / span 2;
-      align-self: start;
-      justify-self: center;
+
+    &__buttons {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
+
+
+@media all and (max-width: 479px) {
+  .header {
+    &__buttons {
+      grid-template-columns: 1fr;
       width: 100%;
     }
   }

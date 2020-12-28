@@ -1,6 +1,6 @@
 @import "../../assets/scss/vars";
 
-.modalLogin{
+.modalRegistration{
   position: fixed;
   left: 0;
   top: 0;
@@ -33,18 +33,16 @@
   &__input{
     margin: 0 0 24px 0;
   }
-  &__rememberMe{
-
+  &__errors{
+    min-height: 111px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: $primaryColor;
   }
   &__btn{
     align-self: center;
-  }
-  &__errors{
-    color: $primaryColor;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 111px;
   }
 }

@@ -16,7 +16,7 @@ const ChannelsPage = (props) => {
     channelsApi.getChannels().then((result) => {
       setChannels(result)
     })
-  }, [channels])
+  }, [setChannels])
 
   return (
     <div className='channelsPage'>

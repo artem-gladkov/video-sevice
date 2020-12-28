@@ -15,7 +15,7 @@ const MoviesPage = (props) => {
     moviesApi.getMovies().then(result => {
       setMovies(result)
     })
-  }, [movies])
+  }, [setMovies])
 
   return (
     <div className='moviesPage'>

@@ -9,7 +9,7 @@ const router = Router()
 
 // /api/auth/register
 router.post(
-  '/register',
+  '/registration',
   [
     body('email', 'Введите корректный email').isEmail(),
     body('password', 'Минимальная длина пароля 6 символов')
@@ -26,7 +26,7 @@ router.post(
         })
       }
 
-      const {email, password} = request.body
+      const {email, password, name} = request.body
 
       const candidate = await User.findOne({email})
 
@@ -34,8 +34,8 @@ router.post(
         return response.status(400).json({message: 'Пользователь с таким email уже существует'})
       }
 
-      const hashedPassword = await bcrypt.hash(password)
-      const user = new User({email, password: hashedPassword})
+      const hashedPassword = await bcrypt.hash(password, 12)
+      const user = new User({email, password: hashedPassword, name})
 
       await user.save()
 
@@ -71,7 +71,7 @@ router.post(
       return response.status(400).json({message: 'Пользователь с таким email не найден'})
     }
 
-    const isMatch = bcrypt.compare(password, user.password)
+    const isMatch = await bcrypt.compare(password, user.password)
 
     if(!isMatch) {
       return response.status(400).json({message: 'Неверный пароль, попробуйте снова'})
@@ -83,7 +83,7 @@ router.post(
       {expiresIn: '1h'}
       )
 
-    response.json({token, userId: user.id})
+    response.json({token, userId: user.id, name: user.name})
   } catch (e) {
     response.status(500).json({message: 'Что то пошло не так, попробуйте снова'})
   }

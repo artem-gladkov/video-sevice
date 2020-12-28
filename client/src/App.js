@@ -6,17 +6,39 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
 import ModalLogin from "./components/ModalLogin/ModalLogin";
-import {getIsAppLock, getIsOpenModalLogin} from "./redux/selectors";
+import {
+  getIsAppLock, getIsAuth,
+  getIsOpenModalLogin,
+  getIsOpenModalRegistration, getUserName,
+} from "./redux/selectors";
 import {closeModal, openModal} from "./redux/modals-reducer";
+import ModalRegistration from "./components/ModalRegistration/ModalRegistration";
+import useAuth from "./hooks/auth.hook";
+import {updateName} from "./redux/auth-reducer";
 
 const App = (props) => {
-  const {isOpenModalLogin, isAppLock, closeModal, openModal} = props
+  const {
+    isOpenModalLogin,
+    isOpenModalRegistration,
+    isAppLock,
+    closeModal,
+    openModal,
+    isAuth,
+    userName,
+    updateName
+  } = props
 
-  const routes = useRoutes()
+  const {login, logout, token} = useAuth()
+  const routes = useRoutes(isAuth)
 
   return (
     <div className={`app ${isAppLock ? 'lock' : ''}`}>
-      <Header openModal={openModal}/>
+      <Header openModal={openModal}
+              isAuth={isAuth}
+              logout={logout}
+              userName={userName}
+              updateName={updateName}
+              token={token}/>
       <div className="container">
         <div className="app__body">
           <Navigation/>
@@ -24,7 +46,8 @@ const App = (props) => {
         </div>
       </div>
       <Footer/>
-      {isOpenModalLogin && <ModalLogin closeModal={closeModal}/>}
+      {isOpenModalLogin && <ModalLogin closeModal={closeModal} login={login}/>}
+      {isOpenModalRegistration && <ModalRegistration closeModal={closeModal} openModal={openModal}/>}
     </div>
   );
 }
@@ -32,7 +55,10 @@ const App = (props) => {
 
 const mapStateToProps = state => ({
   isOpenModalLogin: getIsOpenModalLogin(state),
-  isAppLock: getIsAppLock(state)
+  isOpenModalRegistration: getIsOpenModalRegistration(state),
+  isAppLock: getIsAppLock(state),
+  isAuth: getIsAuth(state),
+  userName: getUserName(state)
 })
 
-export default connect(mapStateToProps, {closeModal, openModal})(App);
+export default connect(mapStateToProps, {closeModal, openModal, updateName})(App);
