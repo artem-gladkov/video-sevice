@@ -4,7 +4,7 @@ import Channel from "../components/Channel/Channel";
 import {connect} from 'react-redux'
 import {channelsApi} from "../api/api";
 import Preloader from "../components/common/Preloader/Preloader";
-import {setChannels} from "../redux/channels-reducer";
+import {setChannels} from "../redux/channelsPageReducer";
 import {getChannels} from "../redux/selectors";
 
 

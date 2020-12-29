@@ -3,26 +3,19 @@ import Input from "../common/Input/Input";
 import './ModalLogin.scss'
 import Checkbox from "../common/Checkbox/Checkbox";
 import Button from "../common/Button/Button";
-import {authApi} from "../../api/api";
+import {connect} from "react-redux";
+import {closeModal} from "../../redux/modalsReducer";
+import {login} from "../../redux/authReducer";
+import {getIsLoadingModalLogin, getModalLoginErrors} from "../../redux/selectors";
 
 const ModalLogin = (props) => {
-  const {closeModal, login} = props
+  const {closeModal, login, errors} = props
 
-  const [form, setForm] = useState({
-    email: '',
-    password: '',
-    rememberMe: false
-  })
+  const [form, setForm] = useState({email: '', password: '', rememberMe: false})
+  const [isLoading, setIsLoading] = useState(false)
 
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState()
-
-  const keyDownHandler = useCallback((e) => {
-    if (e.code === 'Escape') closeModal('modalLogin')
-  }, [closeModal])
-
-  const changeHandler = e => {
-    if (e.target.id === 'rememberMe') {
+  const changeHandler = event => {
+    if (event.target.id === 'rememberMe') {
       setForm({
         ...form,
         rememberMe: !form.rememberMe
@@ -32,31 +25,27 @@ const ModalLogin = (props) => {
 
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [event.target.name]: event.target.value
     })
   }
 
-  const modalClickHandler = (e) => {
-    if (e.target.className !== 'modalLogin') return
+  const modalClickHandler = event => {
+    if (event.target.className !== 'modalLogin') return
     closeModal('modalLogin')
   }
 
-  const submitHandler = e => {
-    e.preventDefault()
-    setLoading(true)
-    authApi.login(form.email, form.password)
-      .then((resp) => {
-        login(resp.data.token, resp.data.userId, resp.data.name)
+  const submitHandler = event => { // Обрабатывает форму
+    event.preventDefault()
+    setIsLoading(true)
 
-        closeModal('modalLogin')
-      })
-      .catch((error) => {
-        setError(error.response.data.message)
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+    login(form.email, form.password).finally(() => {
+      setIsLoading(false)
+    })
   }
+
+  const keyDownHandler = useCallback((e) => {
+    if (e.code === 'Escape') closeModal('modalLogin')
+  }, [closeModal])
 
   useEffect(() => {
     document.addEventListener('keydown', keyDownHandler)
@@ -65,11 +54,9 @@ const ModalLogin = (props) => {
 
   return (
     <div className='modalLogin'
-         onMouseDown={e => {
-           modalClickHandler(e)
-         }}>
+         onMouseDown={e => {modalClickHandler(e)}} >
       <div className='modalLogin__body'>
-        <form onSubmit={submitHandler} className='modalLogin__form'>
+        <form onSubmit={submitHandler} className='modalLogin__form' >
           <h1 className='modalLogin__title'>Вход</h1>
           <Input placeholder='Логин'
                  className='modalLogin__input'
@@ -85,11 +72,11 @@ const ModalLogin = (props) => {
                     name='rememberMe'
                     onChange={changeHandler}/>
           <div className='modalLogin__errors'>
-            {error && <div className='modalLogin__error'>{error}</div>}
+            {errors && <div className='modalLogin__error'>{errors}</div>}
           </div>
           <Button className='modalLogin__btn'
                   onClick={submitHandler}
-                  disabled={loading}>
+                  disabled={isLoading}>
             Войти
           </Button>
         </form>
@@ -98,4 +85,9 @@ const ModalLogin = (props) => {
   )
 }
 
-export default ModalLogin
+const mapStateToProps = state => ({
+  errors: getModalLoginErrors(state),
+  isLoading: getIsLoadingModalLogin(state)
+})
+
+export default connect(mapStateToProps, {closeModal, login})(ModalLogin)

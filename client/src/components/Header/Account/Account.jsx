@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from "react";
+import {connect} from 'react-redux'
 import './Account.scss'
 import {profileApi} from "../../../api/api";
+import {getOwnerName} from "../../../redux/selectors";
+import {logout, updateName} from "../../../redux/authReducer";
 
 
 const Account = (props) => {
-  const {userName, logout, className, updateName, token} = props
+  const {ownerName, logout, className, updateName} = props
 
   const [editMode, setEditMode] = useState(false)
-  const [accountName, setAccountName] = useState(userName)
+  const [accountName, setAccountName] = useState(ownerName)
 
   const accountNameHandler = (e) => {
     setEditMode(true)
@@ -15,7 +18,7 @@ const Account = (props) => {
   }
 
   const submitAccountName = () => {
-    profileApi.updateName(token, accountName)
+    profileApi.updateName(accountName)
       .then(response => {
         if (response.status === 200) {
           updateName(response.data.name)
@@ -28,8 +31,8 @@ const Account = (props) => {
   }
 
   useEffect(() => {
-    setAccountName(userName)
-  }, [userName])
+    setAccountName(ownerName)
+  }, [ownerName])
 
   return (
     <div className={`account ${className && className}`}>
@@ -53,4 +56,8 @@ const Account = (props) => {
   )
 }
 
-export default Account
+const mapStateToProps = state => ({
+   ownerName: getOwnerName(state)
+})
+
+export default connect(mapStateToProps, {logout, updateName})(Account)

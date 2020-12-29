@@ -9,36 +9,27 @@ import ModalLogin from "./components/ModalLogin/ModalLogin";
 import {
   getIsAppLock, getIsAuth,
   getIsOpenModalLogin,
-  getIsOpenModalRegistration, getUserName,
+  getIsOpenModalRegistration,
 } from "./redux/selectors";
-import {closeModal, openModal} from "./redux/modals-reducer";
 import ModalRegistration from "./components/ModalRegistration/ModalRegistration";
-import useAuth from "./hooks/auth.hook";
-import {updateName} from "./redux/auth-reducer";
+import useAuth from "./hook/auth-hook";
 
 const App = (props) => {
   const {
     isOpenModalLogin,
     isOpenModalRegistration,
     isAppLock,
-    closeModal,
-    openModal,
-    isAuth,
-    userName,
-    updateName
+    isAuth
   } = props
 
-  const {login, logout, token} = useAuth()
+
+  useAuth() // Авторизует пользователя если в браузере уже есть token
   const routes = useRoutes(isAuth)
+
 
   return (
     <div className={`app ${isAppLock ? 'lock' : ''}`}>
-      <Header openModal={openModal}
-              isAuth={isAuth}
-              logout={logout}
-              userName={userName}
-              updateName={updateName}
-              token={token}/>
+      <Header/>
       <div className="container">
         <div className="app__body">
           <Navigation/>
@@ -46,8 +37,8 @@ const App = (props) => {
         </div>
       </div>
       <Footer/>
-      {isOpenModalLogin && <ModalLogin closeModal={closeModal} login={login}/>}
-      {isOpenModalRegistration && <ModalRegistration closeModal={closeModal} openModal={openModal}/>}
+      {isOpenModalLogin && <ModalLogin/>}
+      {isOpenModalRegistration && <ModalRegistration/>}
     </div>
   );
 }
@@ -58,7 +49,6 @@ const mapStateToProps = state => ({
   isOpenModalRegistration: getIsOpenModalRegistration(state),
   isAppLock: getIsAppLock(state),
   isAuth: getIsAuth(state),
-  userName: getUserName(state)
 })
 
-export default connect(mapStateToProps, {closeModal, openModal, updateName})(App);
+export default connect(mapStateToProps)(App);

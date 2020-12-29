@@ -1,9 +1,9 @@
 export const getMovies = state => {
-  return state.movies.movies
+  return state.moviesPage.movies
 }
 
 export const getGenres = state => {
-  return state.genres.genres
+  return state.moviesPage.genres
 }
 
 export const getChannels = state => {
@@ -26,6 +26,14 @@ export const getIsAuth = state => {
   return state.auth.isAuth
 }
 
-export const getUserName = state => {
+export const getOwnerName = state => {
   return state.auth.owner.name
+}
+
+export const getModalLoginErrors = state => {
+  return state.modals.modalLogin.errors
+}
+
+export const getIsLoadingModalLogin = state => {
+  return state.modals.modalLogin.isLoading
 }

@@ -4,7 +4,7 @@ const initialState = {
   channels: null
 }
 
-const channelsReducer = (state = initialState, action) => {
+const channelsPageReducer = (state = initialState, action) => {
   switch (action.type){
     case (SET_CHANNELS) :
       return {
@@ -20,4 +20,4 @@ export const setChannels = (channels) => ({type: SET_CHANNELS, channels})
 
 
 
-export default channelsReducer
+export default channelsPageReducer

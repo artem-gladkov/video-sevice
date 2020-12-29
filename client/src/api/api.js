@@ -10,10 +10,31 @@ import * as axios from "axios";
 
 const TIMEOUT = 500 // Искуственная задержка для демонстрации.
 
+let instance = updateInstance()
+
+export function updateInstance(userToken = null) { // Задает headers для запросов в зависомости есть ли у пользователя token
+  let instanceConfig = {
+    baseURL: 'api/'
+  }
+
+  const token = userToken || localStorage.getItem('userToken')
+
+  if (token) {
+    instanceConfig = {
+      ...instanceConfig,
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    }
+  }
+
+  return axios.create(instanceConfig)
+}
+
 export const channelsApi = { // Имитация запроса на сервер для получения списка каналов.
   getChannels() {
     return new Promise(resolve => {
-      const result = [
+      const response = [
         {
           id: 0,
           channelLogoSrc: channelLogoOne,
@@ -145,7 +166,7 @@ export const channelsApi = { // Имитация запроса на серве�
         }
       ] // Имитация получения результата с сервера.
       setTimeout(() => {
-        resolve(result)
+        resolve(response)
       }, TIMEOUT)
     })
   }
@@ -154,7 +175,7 @@ export const channelsApi = { // Имитация запроса на серве�
 export const moviesApi = { // Имитация запроса на сервер для получения списка фильмов.
   getMovies() {
     return new Promise(resolve => {
-      const result = [
+      const response = [
         {
           id: 0,
           photoSrc: moveItemOne,
@@ -187,7 +208,7 @@ export const moviesApi = { // Имитация запроса на сервер 
 
       ] // Имитация получения результата с сервера.
       setTimeout(() => {
-        resolve(result)
+        resolve(response)
       }, TIMEOUT)
     })
   }
@@ -195,18 +216,31 @@ export const moviesApi = { // Имитация запроса на сервер 
 
 export const authApi = {
   registration(email, password, name) {
-    return axios.post('api/auth/registration', {email, password, name})
+    return instance.post('auth/registration', {email, password, name})
   },
-  login(email, password) {
-    return axios.post('api/auth/login', {email, password})
+
+  async login(email, password) {
+    try{
+      const response = await instance.post('auth/login', {email, password})
+
+      localStorage.setItem('userToken', response.data.token)
+      instance = updateInstance(response.data.token)
+    } catch (error){
+      throw error
+    }
+  },
+
+  logout() {
+    localStorage.removeItem('userToken')
+    instance = updateInstance()
   }
 }
 
 export const profileApi = {
-  getOwnerProfile(token){
-    return axios.get('api/profile/info', {headers: {'Authorization': 'Bearer ' + token}})
+  getOwnerProfile() {
+    return instance.get('profile/info')
   },
-  updateName(token, name) {
-    return axios.post('api/profile/updateName', {name}, {headers: {'Authorization': 'Bearer ' + token}})
+  updateName(name) {
+    return instance.post('profile/updateName', {name})
   }
 }

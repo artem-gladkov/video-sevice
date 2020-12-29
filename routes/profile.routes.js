@@ -11,7 +11,7 @@ router.get('/info',auth, async (req, res) => {
   try{
     const {userId} = req.user
 
-    const userInfo = await User.find({_id: userId}, {name: true})
+    const userInfo = await User.find({_id: userId}, {name: true,})
 
     res.status(200).json(...userInfo)
   } catch (e) {

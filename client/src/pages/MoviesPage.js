@@ -4,7 +4,7 @@ import {getGenres, getMovies} from "../redux/selectors";
 import './MoviesPage.scss'
 import MoviesCard from "../components/MoviesCard/MoviesCard";
 import GenresCard from "../components/GenresCard/GenresCard";
-import {setMovies} from "../redux/movies-reducer";
+import {setMovies} from "../redux/moviesPageReducer";
 import {moviesApi} from "../api/api";
 import Preloader from "../components/common/Preloader/Preloader";
 

@@ -65,6 +65,7 @@ router.post(
 
     const {email, password} = request.body
 
+
     const user = await User.findOne({email})
 
     if(!user) {

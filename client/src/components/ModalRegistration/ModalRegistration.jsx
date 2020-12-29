@@ -1,8 +1,10 @@
 import React, {useEffect, useState, useCallback} from 'react'
-import Input from "../common/Input/Input";
+import {connect} from 'react-redux'
+import Input from "../common/Input/Input"
+import Button from "../common/Button/Button"
+import {authApi} from "../../api/api"
+import {closeModal, openModal} from "../../redux/modalsReducer"
 import './ModalRegistration.scss'
-import Button from "../common/Button/Button";
-import {authApi} from "../../api/api";
 
 const ModalRegistration = (props) => {
   const {closeModal, openModal} = props
@@ -85,4 +87,6 @@ const ModalRegistration = (props) => {
   )
 }
 
-export default ModalRegistration
+const mapStateToProps = () => ({})
+
+export default connect(mapStateToProps, {closeModal, openModal})(ModalRegistration)
