@@ -4,7 +4,7 @@ import './Preloader.scss'
 const Preloader = () => {
   return (
     <div className='preloader'>
-      Loading ... ( Имитация загрузки с сервера )
+      Loading ...
     </div>
   )
 }

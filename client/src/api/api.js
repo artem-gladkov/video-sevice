@@ -237,8 +237,13 @@ export const authApi = {
 }
 
 export const profileApi = {
-  getOwnerProfile() {
-    return instance.get('profile/info')
+  async getOwnerProfile() {
+    try {
+      return await instance.get('profile/info')
+    } catch (e) {
+      return e.response
+    }
+
   },
   async updateName(name) {
     try {
