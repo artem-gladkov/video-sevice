@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {connect} from 'react-redux'
-import './Account.scss'
 import {profileApi} from "../../../api/api";
 import {getOwnerName} from "../../../redux/selectors";
 import {logout, updateName} from "../../../redux/authReducer";
+import './Account.scss'
 
 
 const Account = (props) => {
@@ -22,9 +22,10 @@ const Account = (props) => {
       .then(response => {
         if (response.status === 200) {
           updateName(response.data.name)
+        } else {
+          setAccountName(ownerName)
         }
       })
-      .catch()
       .finally(() => {
         setEditMode(false)
       })
@@ -38,14 +39,14 @@ const Account = (props) => {
     <div className={`account ${className && className}`}>
       {editMode
         ? <input type="text"
-                 min='1'
-                 maxLength='20'
-                 name={accountName}
-                 value={accountName}
-                 onBlur={submitAccountName}
-                 autoFocus={true}
-                 onChange={accountNameHandler}
-        />
+                   min='1'
+                   maxLength='20'
+                   name='accountName'
+                   value={accountName}
+                   onBlur={submitAccountName}
+                   autoFocus={true}
+                   onChange={accountNameHandler}
+                   className='account__name'/>
         : <div className='account__name' onClick={() => {
           setEditMode(true)
         }}>{accountName}</div>
@@ -56,8 +57,14 @@ const Account = (props) => {
   )
 }
 
-const mapStateToProps = state => ({
-   ownerName: getOwnerName(state)
-})
+const mapStateToProps = state => (
+  {
+    ownerName: getOwnerName(state)
+  }
+)
 
-export default connect(mapStateToProps, {logout, updateName})(Account)
+export default connect(mapStateToProps,
+  {
+    logout, updateName
+  }
+)(Account)

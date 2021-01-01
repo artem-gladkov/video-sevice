@@ -220,12 +220,12 @@ export const authApi = {
   },
 
   async login(email, password) {
-    try{
+    try {
       const response = await instance.post('auth/login', {email, password})
 
       localStorage.setItem('userToken', response.data.token)
       instance = updateInstance(response.data.token)
-    } catch (error){
+    } catch (error) {
       throw error
     }
   },
@@ -240,7 +240,11 @@ export const profileApi = {
   getOwnerProfile() {
     return instance.get('profile/info')
   },
-  updateName(name) {
-    return instance.post('profile/updateName', {name})
+  async updateName(name) {
+    try {
+      return await instance.post('profile/updateName', {name})
+    } catch (e) {
+      return e.response
+    }
   }
 }

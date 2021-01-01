@@ -16,7 +16,7 @@ const channelsPageReducer = (state = initialState, action) => {
   }
 }
 
-export const setChannels = (channels) => ({type: SET_CHANNELS, channels})
+export const setChannels = channels => ({type: SET_CHANNELS, channels})
 
 
 

@@ -9,23 +9,26 @@ import ModalLogin from "./components/ModalLogin/ModalLogin";
 import {
   getIsAppLock, getIsAuth,
   getIsOpenModalLogin,
-  getIsOpenModalRegistration,
+  getIsOpenModalRegistration, getIsStateInitialized,
 } from "./redux/selectors";
 import ModalRegistration from "./components/ModalRegistration/ModalRegistration";
-import useAuth from "./hook/auth-hook";
-
+import useAuth from "./hook/initialHook";
+import Preloader from "./components/common/Preloader/Preloader";
 const App = (props) => {
   const {
     isOpenModalLogin,
     isOpenModalRegistration,
     isAppLock,
-    isAuth
+    isAuth,
+    isStateInitialized
   } = props
 
-
-  useAuth() // Авторизует пользователя если в браузере уже есть token
+  // Авторизует пользователя если в браузере уже есть token
   const routes = useRoutes(isAuth)
 
+  useAuth()
+
+  if(!isStateInitialized) return <Preloader />
 
   return (
     <div className={`app ${isAppLock ? 'lock' : ''}`}>
@@ -49,6 +52,7 @@ const mapStateToProps = state => ({
   isOpenModalRegistration: getIsOpenModalRegistration(state),
   isAppLock: getIsAppLock(state),
   isAuth: getIsAuth(state),
+  isStateInitialized: getIsStateInitialized(state)
 })
 
 export default connect(mapStateToProps)(App);

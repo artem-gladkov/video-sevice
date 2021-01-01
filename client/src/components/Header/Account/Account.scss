@@ -6,13 +6,15 @@
   align-items: center;
   font-weight: 500;
   &__name{
+    font-family: $mainFont;
     margin: 0 1px 0 0;
     cursor: pointer;
     padding: 3px 6px;
-    border-radius: 5px;
-    &:hover{
-      background: $lightColor;
-    }
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: right;
+    border: none;
+    width: 150px
   }
   &__btnLogout{
     border: none;

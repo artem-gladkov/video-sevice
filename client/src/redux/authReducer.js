@@ -1,6 +1,7 @@
 import {authApi, profileApi} from "../api/api";
 import {closeModal, setModalErrors} from "./modalsReducer";
 
+const INITIAL_STATE = 'video-service/auth/INITIAL_STATE'
 const SET_OWNER = 'video-service/auth/SET_OWNER'
 const DELETE_OWNER = 'video-service/auth/DELETE_OWNER'
 const UPDATE_NAME = 'video-service/auth/UPDATE_NAME'
@@ -11,12 +12,17 @@ const initialState = {
     name: ''
   },
   isAuth: false,
-  stateInitialized: false
+  isStateInitialized: false
 }
 
 const authReducer = (state = initialState, action) => {
 
   switch (action.type) {
+    case INITIAL_STATE:
+      return {
+        ...state,
+        isStateInitialized: true
+      }
     case UPDATE_NAME:
       return {
         ...state,
@@ -26,13 +32,15 @@ const authReducer = (state = initialState, action) => {
         }
       }
     case SET_OWNER:
+
       return {
         ...state,
         owner: {
           name: action.name,
           id: action.id
         },
-        isAuth: true
+        isAuth: true,
+        isStateInitialized: true
       }
     case DELETE_OWNER:
       return {
@@ -48,6 +56,7 @@ const authReducer = (state = initialState, action) => {
 export const setOwner = (id, name) => ({type: SET_OWNER, id, name})
 export const deleteOwner = () => ({type: DELETE_OWNER})
 export const updateName = (newName) => ({type: UPDATE_NAME, newName})
+export const initializeState = () => ({type: INITIAL_STATE})
 
 export const login = (email, password) => async dispatch => {
   try {

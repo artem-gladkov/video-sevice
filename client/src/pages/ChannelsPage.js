@@ -8,9 +8,8 @@ import {setChannels} from "../redux/channelsPageReducer";
 import {getChannels} from "../redux/selectors";
 
 
-const ChannelsPage = (props) => {
+const ChannelsPage = props => {
   const {channels, setChannels} = props
-
   useEffect(() => {
     //Имитация запроса на сервер для получения списка каналов
     channelsApi.getChannels().then((result) => {
